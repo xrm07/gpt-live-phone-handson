@@ -1,0 +1,54 @@
+{
+  "name": "gpt-live-phone-handson",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "VonageとGPT-Liveで、自分の携帯への発信・エコー・日本語会話を段階的に試すハンズオン",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "setup": "node --import tsx scripts/setup.ts",
+    "start:echo": "node --env-file=.env --import tsx src/server.ts --mode=echo",
+    "start:live": "node --env-file=.env --import tsx src/server.ts --mode=live",
+    "call:tts": "node --env-file=.env --import tsx src/call.ts --mode=tts",
+    "call:echo": "node --env-file=.env --import tsx src/call.ts --mode=echo",
+    "call:live": "node --env-file=.env --import tsx src/call.ts --mode=live",
+    "check:live": "node --env-file=.env --import tsx scripts/check-live.ts",
+    "test": "node --import tsx --test test/*.test.ts",
+    "check:public": "node --import tsx scripts/check-public.ts",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write src scripts test docs .github README.md AGENTS.md package.json tsconfig.json",
+    "format:check": "prettier --check src scripts test docs .github README.md AGENTS.md package.json tsconfig.json"
+  },
+  "dependencies": {
+    "openai": "7.51.0",
+    "ws": "8.22.1"
+  },
+  "files": [
+    "src/",
+    "scripts/",
+    "test/",
+    "docs/",
+    "README.md",
+    "AGENTS.md",
+    ".env.example",
+    "tsconfig.json"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/ws": "^8.18.2",
+    "prettier": "^3.9.10",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "printWidth": 100
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xrm07/gpt-live-phone-handson.git"
+  }
+}
